@@ -46,6 +46,32 @@
         margin-left: 40%;
     }
 
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }   
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }   
+
+    th {
+        background-color: #f2f2f2;
+    }   
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }   
+
+    .availability {
+        color: #4CAF50;
+    }   
+
+    .unavailability {
+        color: #FF0000;
+    }   
 
    .sidenav{
         width: 40%;
@@ -64,7 +90,6 @@
     }
 }
 
-
 .login-main-text{
     margin-top: 20%;
     padding: 60px;
@@ -79,37 +104,48 @@
     background-color: #000000 !important;
     color: #ffffff;
 }
+
 </style>
 <div class="sidenav">
          <div class="login-main-text">
-            <h2>Welcome to My Library<br> Sign Up </h2>
-            <p>Register from here to access.</p>
+            <h2>Welcome to My Library<br> Book List </h2>
+            <p>Type Book Name to Checkout Books</p>
          </div>
       </div>
       <div class="main">
          <div class="col-md-6 col-sm-12">
+	     <table border="1">
+              <thead>
+                 <tr>
+                  <th>Book Name</th>
+                  <th>Genre</th>
+                  <th>Availability</th>
+                </tr>
+              </thead>
+             <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.book_ttl }}</td>
+                    <td>{{ book.book_gere }}</td>
+                    <td>{{ "Available" if book.book_aval else "Not Available" }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
             <div class="login-form">
-               <form action="/register/" method="POST" novalidate>
+               <form action="/checkout/" method="POST" novalidate>
                   {{form.hidden_tag()}}
                   <div class="form-group">
-                     <label>User Name</label>
-                     {{form.username(type="text", class="form-control", placeholder="User Name")}}
-
+                     <label>Book Name</label>
+                     {{form.book_title(type="text", class="form-control", placeholder="Book Title")}}
+                     <label>Username</label>
+		     {{form.username(type="text", class="form-control", placeholder="User Name")}}
                      <!-- <input type="text" class="form-control" placeholder="User Name"> -->
                   </div>
-                  <div class="form-group">
-                     <label>Password</label>
-                     {{form.password(type="password", class="form-control", placeholder="Password")}}
-                     <!-- <input type="password" class="form-control" placeholder="Password"> -->
-                  </div>
-		  <div class="form-group">
-                     <label>Roles:</label>
-		     {{form.role(class="form-control")}}
-		     <!-- <input type="password" class="form-control" plac    eholder="Password"> -->
-		  </div>
                   {{form.submit(type="submit", class="btn btn-black")}}
                   <!-- <button type="submit" class="btn btn-black">Login</button> -->
-                  <a href="{{ url_for('login') }}" class="btn btn-secondary">Login</a>
+                  <a href="{{ url_for('home_admin') }}" class="btn btn-secondary">Home</a>
                </form>
             </div>
          </div>
@@ -134,3 +170,4 @@
     <p>{{form.submit()}}</p>
     <a href="{{url_for('login')}}">Login</a>
 </form> -->
+

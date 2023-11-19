@@ -11,16 +11,18 @@
 
 .main-head{
     height: 150px;
-    background: #FFF;
-   
+    background: #ffffff9c;
+
 }
 
 .sidenav {
     height: 100%;
-    background-color: #000;
+    background-color: #302f2fbc;
     overflow-x: hidden;
     padding-top: 20px;
 }
+
+
 .main {
     padding: 0px 10px;
 }
@@ -44,9 +46,10 @@
         margin-left: 40%;
     }
 
-    .sidenav{
+
+   .sidenav{
         width: 40%;
-	position: fixed;
+        position: fixed;
         z-index: 1;
         top: 0;
         left: 0;
@@ -65,57 +68,59 @@
 .login-main-text{
     margin-top: 20%;
     padding: 60px;
-    color: #fff;
+    color: #ffffff;
 }
 
 .login-main-text h2{
     font-weight: 300;
-
 }
 
 .btn-black{
-    background-color: #000 !important;
-    color: #fff;
+    background-color: #000000 !important;
+    color: #ffffff;
 }
 </style>
 <div class="sidenav">
          <div class="login-main-text">
-            <h2>Welcome my library<br> Login Page</h2>
-            <p>Login with existing credential</p>
-	    <p>Register for a new account</p>
-	    <p>Login as Guest</p>
+            <h2>Welcome to My Library<br> Delete User </h2>
+            <p>Type username to delete user</p>
          </div>
       </div>
       <div class="main">
          <div class="col-md-6 col-sm-12">
             <div class="login-form">
-               <form action="/login/" method="POST" novalidate>
+               <form action="/register/" method="POST" novalidate>
                   {{form.hidden_tag()}}
                   <div class="form-group">
                      <label>User Name</label>
-                     {{form.username(type="text", class="form-control", placeholder="User Name")}}
+                     {{form.username_del(type="text", class="form-control", placeholder="User Name")}}
+
                      <!-- <input type="text" class="form-control" placeholder="User Name"> -->
-                  </div>
-                  <div class="form-group">
-                     <label>Password</label>
-                     {{form.password(type="password", class="form-control", placeholder="Password")}}
-                     <!-- <input type="password" class="form-control" placeholder="Password"> -->
-                  </div>
-                  <div class="form-group">
-                     <label>Remember me</label>
-                     {{form.remember_me()}}
                   </div>
                   {{form.submit(type="submit", class="btn btn-black")}}
                   <!-- <button type="submit" class="btn btn-black">Login</button> -->
-                  <a href="{{ url_for('register') }}" class="btn btn-secondary">Register</a>
-	       </form>
-	       <form action="/home_guest/" method="GET" novalidate>
-                  {{ form.hidden_tag() }}
-                  <button type="submit" name="guest" value="1" class="btn btn-secondary">Guest</button>
-
-	       </form>
+                  <a href="{{ url_for('home_admin') }}" class="btn btn-secondary">Home</a>
+               </form>
             </div>
          </div>
       </div>
 {% endblock %}
 
+<!-- <h1>Sign Up</h1>
+<form action="/sign_up/" method="POST" novalidate>
+    {{form.hidden_tag()}}
+    <p> {{form.username.label}} <br>
+       {{form.username(size=32)}}</p>
+
+    <p> {{form.password.label}} <br>
+       {{form.password(size=32)}}</p>
+
+    <p> {{form.permission.label}} <br>
+       {{form.permission(size=32)}}</p>
+
+    <p> {{form.phone_number.label}} <br>
+       {{form.phone_number()}}
+
+    <p>{{form.submit()}}</p>
+    <a href="{{url_for('login')}}">Login</a>
+</form> -->
