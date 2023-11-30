@@ -19,7 +19,7 @@ The OS or terminal must support flask and wtforms.
 
 ## Installation
 pip install the following:
-
+```
 Flask
 Flask-SQLAlchemy
 google-api-python-client 
@@ -28,7 +28,7 @@ google-auth-oauthlib
 email_validator
 flask_wtf
 beautifulsoup4
-
+```
 To run code:
 
 ```
