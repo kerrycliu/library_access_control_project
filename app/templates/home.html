@@ -189,15 +189,13 @@ body {
             <img class="rounded-circle" width="140" height="140">
             <h2>Browse Books</h2>
             <p>See all the book collections</p>
-            <p><a class="btn btn-secondary" href="{{url_for('checkout_book')}}" role="button">Select Books &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="{{url_for('checkout_book')}}" role="button">Browse Books &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle"  width="140" height="140">
-            <h2>View Database -- TBD </h2>
-            <p>Go to http://127.0.0.1:5000/login/ or click on Go To</p>
-            <p>Enter existing loggin credentials</p>
-            <p>This will send you to home if the credentials exist</p>
-            <p><a class="btn btn-secondary" href="{{url_for('login')}}" role="button">Go To Log In &raquo;</a></p>
+            <h2>Check Out Books </h2>
+            <p>Book will be checked out and removed from the table.</p>
+            <p><a class="btn btn-secondary" href="{{url_for('checkout_book')}}" role="button">Browse Books &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
@@ -208,29 +206,17 @@ body {
 
         <div class="row featurette">
           <div class="col-md-7">
-            <h2 class="featurette-heading">Delete User From Database <span class="text-muted">Remove permantely</span></h2>
-            <p class="lead">1. Click 'Delete User' button</p>
-            <p class="lead">2. Enter the username of that user </p>
-            <p class="lead">3. Click on Delete</p>
-            <p class="lead">Note: This will permanently delete the user data. Only Admins are allowed to do this.</p>
+            <h2 class="featurette-heading">Browse Books Availablility <span class="text-muted">Checkout Books</span></h2>
+            <p class="lead">1. Click 'Browse Books' button</p>
+            <p class="lead">2. Enter the book name from the table, enter your username of </p>
+            <p class="lead">3. Click on Checkout</p>
+            <p class="lead">Note: This will remove the book name you entered from the table, indicating that you have successfully checked out the book you entered. </p>
           </div>
           <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" src="https://icons.veryicon.com/png/o/education-technology/learning-headlines/delete-180.png" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto" src="https://images.vexels.com/media/users/3/157545/isolated/lists/057098b4a63e172134e0f04bbbcd6e8b-school-book-icon.png" alt="Generic placeholder image">
           </div>
         </div>
 
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-          <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">View Database <span class="text-muted">Look through different databases</span></h2>
-            <p class="lead">1. Click the 'View Database' button</p>
-            <p class="lead">2. Select database you want to see. </p>
-            <p class="lead">Note: Only admins have the access to database information.</p>
-          </div>
-          <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/database-512.png">
-          </div>
         </div>
 
         <!-- /END THE FEATURETTES -->
@@ -241,7 +227,7 @@ body {
       <!-- FOOTER -->
       <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2023 Team11 Inc. </p>
+        <p>&copy; 2023 CMPE132 Inc. </p>
       </footer>
     </main>
 

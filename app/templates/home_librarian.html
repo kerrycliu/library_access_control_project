@@ -149,7 +149,7 @@ body {
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/home/"> Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/home_librarian/"> Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url_for('logout')}}">Log Out</a>
@@ -166,10 +166,10 @@ body {
           <div class="carousel-item active title">
             <div class="container">
               <div class="carousel-caption text-left">
-                <h1>Welcome To Admin Page </h1>
+                <h1>Welcome To Librarian Page </h1>
                 <p>What you can do: </p> 
-                <p>Delete Users</p>
-                <p>View Database</p>
+                <p>Add Books</p>
+                <p>View Book Database</p>
                 </div>
               </div>
             </div>
@@ -193,11 +193,9 @@ body {
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle"  width="140" height="140">
-            <h2>View Database -- TBD </h2>
-            <p>Go to http://127.0.0.1:5000/login/ or click on Go To</p>
-            <p>Enter existing loggin credentials</p>
-            <p>This will send you to home if the credentials exist</p>
-            <p><a class="btn btn-secondary" href="{{url_for('login')}}" role="button">Go To Log In &raquo;</a></p>
+            <h2>View Book List </h2>
+            <p>This will allow you to view current books available</p>
+            <p><a class="btn btn-secondary" href="{{url_for('books_lib')}}" role="button">Go To Book List &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
@@ -208,14 +206,14 @@ body {
 
         <div class="row featurette">
           <div class="col-md-7">
-            <h2 class="featurette-heading">Delete User From Database <span class="text-muted">Remove permantely</span></h2>
-            <p class="lead">1. Click 'Delete User' button</p>
-            <p class="lead">2. Enter the username of that user </p>
-            <p class="lead">3. Click on Delete</p>
-            <p class="lead">Note: This will permanently delete the user data. Only Admins are allowed to do this.</p>
+            <h2 class="featurette-heading">Add Books to the library <span class="text-muted">Add Books</span></h2>
+            <p class="lead">1. Click Add Books button</p>
+            <p class="lead">2. Enter the book name and the genre of the book</p>
+            <p class="lead">3. Click on Add</p>
+            <p class="lead">This will add book to the Book data. Only Librarians are allowed to do this.</p>
           </div>
           <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" src="https://icons.veryicon.com/png/o/education-technology/learning-headlines/delete-180.png" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto" src="https://cdn-icons-png.flaticon.com/512/992/992651.png" alt="Generic placeholder image">
           </div>
         </div>
 
@@ -223,13 +221,12 @@ body {
 
         <div class="row featurette">
           <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">View Database <span class="text-muted">Look through different databases</span></h2>
-            <p class="lead">1. Click the 'View Database' button</p>
-            <p class="lead">2. Select database you want to see. </p>
-            <p class="lead">Note: Only admins have the access to database information.</p>
+            <h2 class="featurette-heading">Book List <span class="text-muted">See what is available</span></h2>
+            <p class="lead">1. Click the 'Book List' button</p>
+            <p class="lead">2. View Current book collection in the library </p>
           </div>
           <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/database-512.png">
+            <img class="featurette-image img-fluid mx-auto" src="https://images.vexels.com/media/users/3/157545/isolated/lists/057098b4a63e172134e0f04bbbcd6e8b-school-book-icon.png">
           </div>
         </div>
 
@@ -241,7 +238,7 @@ body {
       <!-- FOOTER -->
       <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2023 Team11 Inc. </p>
+        <p>&copy; 2023 CMPE 132 Inc. </p>
       </footer>
     </main>
 

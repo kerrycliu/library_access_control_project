@@ -91,16 +91,20 @@ def home_guest():
 @login_required
 def delete_user():
     form = delete_user_form()
-    user_to_delete = User.query.filter_by(username=form.username_del.data).first()
-    if user_to_delete:
-        user_delete = Delete_user(admin_username=current_user.username, deleted_user=user_to_delete.username, delete_time=datetime.now(), admin_id = current_user.id, user_id=user_to_delete.id) 
-        db.session.add(user_delete)
-        db.session.delete(user_to_delete)
-        db.session.commit()
-        flash(f"User {user_to_delete.username} has been deleted.")
-        return redirect('/delete/')
-    else:
-        flash("User did not get deleted.")
+    if form.validate_on_submit():
+        if form.admin_cred.data == current_user.username:
+            user_to_delete = User.query.filter_by(username=form.username_del.data).first()
+            if user_to_delete:
+                user_delete = Delete_user(admin_username=current_user.username, deleted_user=user_to_delete.username, delete_time=datetime.now(), admin_id=current_user.id, user_id=user_to_delete.id) 
+                db.session.add(user_delete)
+                db.session.delete(user_to_delete)
+                db.session.commit()
+                flash("User has been deleted.")
+                return redirect('/delete/')
+            else:
+                flash("Username does not exist.")
+        else:
+            flash("Admin credential incorrect.")
     return render_template('delete_user.html', form=form)
 
 @myapp_obj.route('/checkout/', methods=['GET', 'POST'])
@@ -131,15 +135,15 @@ def checkout_book():
 def modify_books():
     form = add_books_to_library()
     if form.validate_on_submit():
-        book_exists = Book_data.query.filter_by(book_aval=True).first()
-        if book_exists:
-            flash('The book already exists.')
-        else:
-            book_info = Book_data(book_ttl=form.book_name.data, book_gere=form.book_genere.data, book_aval=form.book_available.data)
-            db.session.add(book_info)
-            db.session.commit()
-            flash('Book added successfully', 'success')
-            return redirect(url_for('modify_book'))
+       # book_exists = Book_data.query.filter_by(book_aval=True).first()
+       # if book_exists:
+       #     flash('The book already exists.')
+       # else:
+        book_info = Book_data(book_ttl=form.book_name.data, book_gere=form.book_genere.data, book_aval=form.book_available.data)
+        db.session.add(book_info)
+        db.session.commit()
+        flash('Book added successfully', 'success')
+        return redirect(url_for('modify_books'))
     return render_template('add_book.html', form=form)
 
 @myapp_obj.route('/books/', methods=['POST', 'GET'])
@@ -147,4 +151,16 @@ def books():
     books = Book_data.query.all()
     return render_template('home_guest.html', books=books)
 
+@myapp_obj.route('/books_lib/', methods=['POST', 'GET'])
+def books_lib():
+    books = Book_data.query.all()
+    return render_template('book_lib.html', books=books)
 
+@myapp_obj.route('/admin_database', methods=['POST', 'GET'])
+@login_required
+def admin_database():
+    login_info = User.query.all()
+    books = Book_data.query.all()
+    deletes = Delete_user.query.all()
+    rent_books = Rent_books.query.all()
+    return render_template('admin_database.html', login_info=login_info, books=books, deletes=deletes, rent_books=rent_books)

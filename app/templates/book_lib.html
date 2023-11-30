@@ -46,6 +46,32 @@
         margin-left: 40%;
     }
 
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }   
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }   
+
+    th {
+        background-color: #f2f2f2;
+    }   
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }   
+
+    .availability {
+        color: #4CAF50;
+    }   
+
+    .unavailability {
+        color: #FF0000;
+    }   
 
    .sidenav{
         width: 40%;
@@ -64,7 +90,6 @@
     }
 }
 
-
 .login-main-text{
     margin-top: 20%;
     padding: 60px;
@@ -79,34 +104,36 @@
     background-color: #000000 !important;
     color: #ffffff;
 }
+
 </style>
 <div class="sidenav">
          <div class="login-main-text">
-            <h2>Welcome to My Library<br> Delete User </h2>
-            <p>Type username to delete user</p>
-	    <p>Deleted users can be found on the Deleted User database</p>
-	    <p>In the mean time, deleted user is removed from the User database</p>
+            <h2>Welcome to My Library<br> Book List </h2>
+            <p>View Books to see what is available</p>
+	    <a href="{{ url_for('home_lib') }}" class="btn btn-black">Home</a>
          </div>
       </div>
       <div class="main">
          <div class="col-md-6 col-sm-12">
-            <div class="login-form">
-               <form action="/delete/" method="POST" novalidate>
-                  {{form.hidden_tag()}}
-                  <div class="form-group">
-                     <label>User Name</label>
-                     {{form.username_del(type="text", class="form-control", placeholder="User Name")}}
-                     <label>Admin Username</label>
-		     {{form.admin_cred(type="text", class="form-control", placeholder="Admin Username")}}
-                     <label>Reason for Deletion</label>
-		     {{form.reason_del(type="text", class="form-control", placeholder="Reason")}}
-                     <!-- <input type="text" class="form-control" placeholder="User Name"> -->
-                  </div>
-                  {{form.submit(type="submit", class="btn btn-black")}}
-                  <!-- <button type="submit" class="btn btn-black">Login</button> -->
-                  <a href="{{ url_for('home_admin') }}" class="btn btn-secondary">Home</a>
-               </form>
-            </div>
+	     <table border="1">
+              <thead>
+                 <tr>
+                  <th>Book Name</th>
+                  <th>Genre</th>
+                  <th>Availability</th>
+                </tr>
+              </thead>
+             <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.book_ttl }}</td>
+                    <td>{{ book.book_gere }}</td>
+                    <td>{{ "Available" if book.book_aval else "Not Available" }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
          </div>
       </div>
 {% endblock %}
@@ -129,3 +156,4 @@
     <p>{{form.submit()}}</p>
     <a href="{{url_for('login')}}">Login</a>
 </form> -->
+

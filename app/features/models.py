@@ -10,6 +10,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
     role = db.Column(db.String(20), nullable=False)
+    deleted_by_admin = db.relationship('Delete_user', backref='admin_user', foreign_keys='Delete_user.admin_id')
     def check_password(self, password):
         return check_password_hash(self.password, password)
     def set_password(self, password):
@@ -32,15 +33,13 @@ class Book_data(db.Model):
 # Defines Delete user:
 class Delete_user(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(100), nullable=True)
     admin_username = db.Column(db.String(100), nullable=False)
     deleted_user = db.Column(db.String(100), nullable=False)
     delete_time = db.Column(db.DateTime, nullable=False, default=datetime.now)
     admin_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    admin = db.relationship('User', foreign_keys=[admin_id], backref='deleted_by_admin', uselist=False)
-    user = db.relationship('User', foreign_keys=[user_id], backref='deleted_user', uselist=False)
-
+    admin = db.relationship('User', foreign_keys=[admin_id], backref='deleted_users', uselist=False)
+    
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))

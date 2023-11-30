@@ -149,7 +149,7 @@ body {
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/home/"> Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/home_admin/"> Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url_for('logout')}}">Log Out</a>
@@ -193,11 +193,9 @@ body {
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle"  width="140" height="140">
-            <h2>View Database -- TBD </h2>
-            <p>Go to http://127.0.0.1:5000/login/ or click on Go To</p>
-            <p>Enter existing loggin credentials</p>
-            <p>This will send you to home if the credentials exist</p>
-            <p><a class="btn btn-secondary" href="{{url_for('login')}}" role="button">Go To Log In &raquo;</a></p>
+            <h2>View Database </h2>
+            <p>This allows admins to view database information.</p>
+            <p><a class="btn btn-secondary" href="{{url_for('admin_database')}}" role="button">View Database &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
@@ -241,7 +239,7 @@ body {
       <!-- FOOTER -->
       <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2023 Team11 Inc. </p>
+        <p>&copy; 2023 CMPE 132 Inc. </p>
       </footer>
     </main>
 

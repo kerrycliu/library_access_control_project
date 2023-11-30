@@ -103,28 +103,10 @@
                   </div>
                   {{form.submit(type="submit", class="btn btn-black")}}
                   <!-- <button type="submit" class="btn btn-black">Login</button> -->
-                  <a href="{{ url_for('home_admin') }}" class="btn btn-secondary">Home</a>
+                  <a href="{{ url_for('home_lib') }}" class="btn btn-secondary">Home</a>
                </form>
             </div>
          </div>
       </div>
 {% endblock %}
 
-<!-- <h1>Sign Up</h1>
-<form action="/sign_up/" method="POST" novalidate>
-    {{form.hidden_tag()}}
-    <p> {{form.username.label}} <br>
-       {{form.username(size=32)}}</p>
-
-    <p> {{form.password.label}} <br>
-       {{form.password(size=32)}}</p>
-
-    <p> {{form.permission.label}} <br>
-       {{form.permission(size=32)}}</p>
-
-    <p> {{form.phone_number.label}} <br>
-       {{form.phone_number()}}
-
-    <p>{{form.submit()}}</p>
-    <a href="{{url_for('login')}}">Login</a>
-</form> -->

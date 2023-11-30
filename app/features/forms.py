@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, HiddenField, SelectField, PasswordField, BooleanField, SubmitField, TextAreaField, DateTimeLocalField, IntegerField
+from wtforms import StringField, TextAreaField, HiddenField, SelectField, PasswordField, BooleanField, SubmitField, TextAreaField, DateTimeLocalField, IntegerField
 from wtforms.validators import DataRequired,Length,Regexp
 import re
 
@@ -39,4 +39,6 @@ class add_books_to_library(FlaskForm):
 
 class delete_user_form(FlaskForm):
     username_del = StringField('Username', validators=[DataRequired()])
+    admin_cred = StringField('Admin Username', validators=[DataRequired()])
+    reason_del = TextAreaField('Reason for Deletion', validators=[DataRequired()])
     submit = SubmitField('Delete')
