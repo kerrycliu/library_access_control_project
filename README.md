@@ -18,4 +18,19 @@ This model uses RBAC (Role-Based Access Control) Model, involving password encry
 The OS or terminal must support flask and wtforms.
 
 ## Installation
-pip install flask
+pip install the following:
+
+Flask
+Flask-SQLAlchemy
+google-api-python-client 
+google-auth-httplib2 
+google-auth-oauthlib
+email_validator
+flask_wtf
+beautifulsoup4
+
+To run code:
+
+```
+python3 main.py
+```
